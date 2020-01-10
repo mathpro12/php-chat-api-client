@@ -5,6 +5,7 @@ namespace Pedrommone\ChatAPI;
 use GuzzleHttp\Client as Guzzle;
 use GuzzleHttp\Handler\CurlHandler;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\RequestOptions;
 use Pedrommone\ChatAPI\Middlewares\InjectTokenAuthorization;
 use Pedrommone\ChatAPI\Resources\Ban;
 use Pedrommone\ChatAPI\Resources\Dialogs;
@@ -69,6 +70,7 @@ class Client
         $guzzle = new Guzzle([
             'base_uri' => sprintf(self::URL, $instanceId),
             'handler' =>  $handler,
+            'verify' => false,
         ]);
 
         $handler->push((new InjectTokenAuthorization())($token));
