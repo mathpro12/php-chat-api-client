@@ -69,6 +69,7 @@ class Client
         $guzzle = new Guzzle([
             'base_uri' => sprintf(self::URL, $instanceId),
             'handler' =>  $handler,
+            'verify' => false,
         ]);
 
         $handler->push((new InjectTokenAuthorization())($token));
