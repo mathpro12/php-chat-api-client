@@ -4,6 +4,7 @@ namespace Pedrommone\ChatAPI\Resources;
 
 use GuzzleHttp\Client as Guzzle;
 use GuzzleHttp\RequestOptions;
+use Psr\Http\Message\StreamInterface;
 
 class Instance
 {
@@ -21,11 +22,11 @@ class Instance
         return json_decode((string) $request->getBody());
     }
 
-    public function qrCode(): \stdClass
+    public function qrCode(): StreamInterface
     {
         $request = $this->guzzle->get('qr_code');
 
-        return json_decode((string) $request->getBody());
+        return $request->getBody();
     }
 
     public function logout(): \stdClass
