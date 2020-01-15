@@ -50,6 +50,13 @@ class Instance
         return json_decode((string) $request->getBody());
     }
 
+    public function screenshot(): StreamInterface
+    {
+        $request = $this->guzzle->post('screenshot');
+
+        return $request->getBody();
+    }
+
     public function update(array $parameters = []): \stdClass
     {
         $request = $this->guzzle->post('settings', [
