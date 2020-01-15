@@ -52,7 +52,7 @@ class Instance
 
     public function screenshot(): StreamInterface
     {
-        $request = $this->guzzle->post('screenshot');
+        $request = $this->guzzle->get('screenshot');
 
         return $request->getBody();
     }
